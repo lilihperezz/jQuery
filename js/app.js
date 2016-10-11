@@ -1,12 +1,17 @@
-window.addEventListener("load",function(){
-var videos = document.querySelectorAll("a"); 
-    for(var i = 0; i<videos.length ; i++){
-		 var videosLinks = videos[i];
+var enlaces = document.querySelectorAll("a");
 
-var link = videosLinks.getAttribute("href");
-var thumbnail = youtube.generateThumbnailUrl(link);
-var imagen = document.createElement("img");
-    imagen.setAttribute ( "src",thumbnail);
-    videosLinks.appendChild(imagen);
-    }
-});
+var cargaPagina = function () {
+	// var enlaces = document.getElementsByTagName("a");
+	//for (var i = 0, l = enlaces.length; i < l; i++) {
+	enlaces.forEach(function(enlace) {
+		// var enlace = enlaces[i];
+		var linkVideo = enlace.getAttribute("href");
+		var linkImagen = youtube.generateThumbnailUrl(linkVideo);
+		var img = document.createElement("img");
+		img.setAttribute("src", linkImagen);
+		enlace.appendChild(img);
+	});
+	//}
+};
+
+window.addEventListener("load", cargaPagina);
